@@ -8,7 +8,7 @@ try {
   }
   supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
     auth: {
-      persistSession: false,   // không lưu session vào localStorage -> reload/mở lại tab = phải đăng nhập lại
+      persistSession: false,
       autoRefreshToken: true
     }
   });
@@ -24,12 +24,7 @@ const loginForm = document.getElementById('loginForm');
 const registerForm = document.getElementById('registerForm');
 const loginError = document.getElementById('loginError');
 const registerError = document.getElementById('registerError');
-const otpForm = document.getElementById('otpForm');
-const otpError = document.getElementById('otpError');
-const otpIntro = document.getElementById('otpIntro');
-const otpResendBtn = document.getElementById('otpResendBtn');
 
-let pendingOtpEmail = null;
 const accountTrigger = document.getElementById('accountTrigger');
 const accountPanel = document.getElementById('accountPanel');
 const appUserName = document.getElementById('appUserName');
@@ -55,6 +50,7 @@ function clearSessionTimeout(){
     sessionTimeoutId = null;
   }
 }
+
 function lang(){ return document.body.getAttribute('data-lang') || 'vi'; }
 function msg(vi, en){ return lang() === 'vi' ? vi : en; }
 
@@ -75,13 +71,10 @@ function switchAuthTab(target){
   loginForm.style.display = showLogin ? '' : 'none';
   registerForm.classList.toggle('hidden', showLogin);
   registerForm.style.display = showLogin ? 'none' : '';
-  otpForm.classList.add('hidden');
-  otpForm.style.display = 'none';
 }
 tabLogin.addEventListener('click', () => switchAuthTab('login'));
 tabRegister.addEventListener('click', () => switchAuthTab('register'));
 
-// ================== SHOW/HIDE PASSWORD ==================
 document.querySelectorAll('.auth-eye-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const input = document.getElementById(btn.dataset.toggle);
@@ -113,13 +106,13 @@ function renderLoggedInState(user, profile){
     }
   });
 
-  startSessionTimeout(); // ← thêm dòng này
+  startSessionTimeout();
 }
 
 function renderLoggedOutState(){
   authOverlay.classList.remove('hidden');
   appShell.classList.add('hidden');
-  clearSessionTimeout(); // ← thêm dòng này
+  clearSessionTimeout();
 }
 
 async function fetchProfile(userId){
@@ -178,11 +171,19 @@ registerForm.addEventListener('submit', async (e) => {
   const submitBtn = registerForm.querySelector('.auth-submit');
   submitBtn.disabled = true;
 
-  const { data, error } = await supabaseClient.auth.signUp({
-    email,
-    password,
-    options: { data: { full_name: name } }
-  });
+  let data, error;
+  try {
+    ({ data, error } = await supabaseClient.auth.signUp({
+      email,
+      password,
+      options: { data: { full_name: name } }
+    }));
+  } catch (err) {
+    submitBtn.disabled = false;
+    showError(registerError, msg('Có lỗi xảy ra, vui lòng thử lại.', 'Something went wrong, please try again.'));
+    console.error('Lỗi đăng ký:', err);
+    return;
+  }
 
   submitBtn.disabled = false;
 
@@ -192,97 +193,29 @@ registerForm.addEventListener('submit', async (e) => {
   }
 
   if(data.user){
-    const { error: profileError } = await supabaseClient.from('users').upsert({
-      id: data.user.id,
-      email,
-      full_name: name,
-    });
-    if(profileError) console.error('Lỗi tạo hồ sơ user:', profileError.message);
+    try {
+      const { error: profileError } = await supabaseClient.from('users').upsert({
+        id: data.user.id,
+        email,
+        full_name: name,
+      });
+      if(profileError) console.error('Lỗi tạo hồ sơ user:', profileError.message);
+    } catch (err) {
+      console.error('Lỗi tạo hồ sơ user:', err);
+    }
   }
 
   if(data.session){
-    // Trường hợp Supabase project tắt "Confirm email" -> có session ngay
     await loadCurrentSession();
   } else {
-    // Cần xác thực OTP trước khi có session
-    pendingOtpEmail = email;
-
-    registerForm.classList.add('hidden');
-    registerForm.style.display = 'none';
-    otpForm.classList.remove('hidden');
-    otpForm.style.display = '';
-    clearError(otpError);
-    document.getElementById('otpCode').value = '';
-
-    otpIntro.textContent = msg(
-      `Mã 6 số đã được gửi tới ${email}. Vui lòng kiểm tra hộp thư (kể cả mục spam).`,
-      `A 6-digit code was sent to ${email}. Please check your inbox (including spam).`
-    );
+    registerForm.reset();
+    showError(registerError, msg(
+      `Vui lòng kiểm tra email ${email} và bấm vào link xác nhận để hoàn tất đăng ký.`,
+      `Please check ${email} and click the confirmation link to complete registration.`
+    ));
   }
 });
-// ================== VERIFY OTP (xác thực email lúc đăng ký) ==================
-otpForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  clearError(otpError);
 
-  if(!supabaseClient || !pendingOtpEmail){
-    showError(otpError, msg('Có lỗi xảy ra, vui lòng đăng ký lại.', 'Something went wrong, please sign up again.'));
-    return;
-  }
-
-  const token = document.getElementById('otpCode').value.trim();
-
-  if(!/^\d{6}$/.test(token)){
-    showError(otpError, msg('Mã xác thực phải gồm 6 chữ số.', 'Verification code must be 6 digits.'));
-    return;
-  }
-
-  const submitBtn = otpForm.querySelector('.auth-submit');
-  submitBtn.disabled = true;
-
-  const { data, error } = await supabaseClient.auth.verifyOtp({
-    email: pendingOtpEmail,
-    token,
-    type: 'signup'
-  });
-
-  submitBtn.disabled = false;
-
-  if(error){
-    showError(otpError, msg('Mã xác thực không đúng hoặc đã hết hạn.', 'Incorrect or expired verification code.'));
-    return;
-  }
-
-  // Xác thực thành công -> đã có session luôn
-  pendingOtpEmail = null;
-  otpForm.reset();
-  await loadCurrentSession();
-});
-
-// ================== RESEND OTP ==================
-otpResendBtn.addEventListener('click', async () => {
-  if(!supabaseClient || !pendingOtpEmail) return;
-
-  otpResendBtn.disabled = true;
-  clearError(otpError);
-
-  const { error } = await supabaseClient.auth.resend({
-    type: 'signup',
-    email: pendingOtpEmail
-  });
-
-  if(error){
-    showError(otpError, msg('Không gửi lại được mã, thử lại sau.', 'Could not resend code, please try again later.'));
-  } else {
-    otpIntro.textContent = msg(
-      `Đã gửi lại mã tới ${pendingOtpEmail}.`,
-      `Code resent to ${pendingOtpEmail}.`
-    );
-  }
-
-  // Chặn spam bấm gửi lại liên tục — mở khoá sau 30 giây
-  setTimeout(() => { otpResendBtn.disabled = false; }, 30 * 1000);
-});
 loginForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   clearError(loginError);
@@ -298,25 +231,57 @@ loginForm.addEventListener('submit', async (e) => {
   const submitBtn = loginForm.querySelector('.auth-submit');
   submitBtn.disabled = true;
 
-  const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+  let data, error;
+  try {
+    ({ data, error } = await supabaseClient.auth.signInWithPassword({ email, password }));
+  } catch (err) {
+    submitBtn.disabled = false;
+    showError(loginError, msg('Có lỗi xảy ra, vui lòng thử lại.', 'Something went wrong, please try again.'));
+    console.error('Lỗi đăng nhập:', err);
+    return;
+  }
 
   submitBtn.disabled = false;
 
   if(error){
-    showError(loginError, msg('Email hoặc mật khẩu không đúng.', 'Incorrect email or password.'));
+    const rawMsg = (error.message || '').toLowerCase();
+    if(rawMsg.includes('email not confirmed')){
+      showError(loginError, msg(
+        'Vui lòng kiểm tra email và bấm vào link xác nhận trước khi đăng nhập.',
+        'Please check your email and click the confirmation link before logging in.'
+      ));
+    } else if(rawMsg.includes('invalid login credentials')){
+      showError(loginError, msg('Email hoặc mật khẩu không đúng.', 'Incorrect email or password.'));
+    } else {
+      showError(loginError, msg('Đăng nhập thất bại. Vui lòng thử lại.', 'Login failed. Please try again.'));
+    }
+    console.error('Supabase signIn error:', error.message);
     return;
   }
 
-  await supabaseClient.from('users').update({ last_login_at: new Date().toISOString() }).eq('id', data.user.id);
+  let profile = null;
+  try {
+    await supabaseClient
+      .from('users')
+      .update({ last_login_at: new Date().toISOString() })
+      .eq('id', data.user.id);
+  } catch (err) {
+    console.error('Không cập nhật được last_login_at:', err);
+  }
 
-  const profile = await fetchProfile(data.user.id);
+  try {
+    profile = await fetchProfile(data.user.id);
+  } catch (err) {
+    console.error('Không lấy được hồ sơ user:', err);
+  }
+
   renderLoggedInState(data.user, profile);
 });
 
 appLogoutBtn.addEventListener('click', async () => {
   if(supabaseClient) await supabaseClient.auth.signOut();
   accountPanel.classList.remove('open');
-  clearSessionTimeout(); 
+  clearSessionTimeout();
   renderLoggedOutState();
 });
 
@@ -332,7 +297,6 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// ================== SECTION SWITCH (sidebar nav) ==================
 document.querySelectorAll('.app-nav-item[data-section]').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.app-nav-item[data-section]').forEach(b => b.classList.remove('active'));
@@ -344,13 +308,10 @@ document.querySelectorAll('.app-nav-item[data-section]').forEach(btn => {
   });
 });
 
-// ================== LANG TOGGLE ==================
 document.getElementById('appLangBtn').addEventListener('click', () => {
   const newLang = lang() === 'vi' ? 'en' : 'vi';
   document.body.setAttribute('data-lang', newLang);
 });
-
-// ================== READINGS (Bài đọc) ==================
 
 const readingGrid = document.getElementById("readingGrid");
 const articleOverlay = document.getElementById("articleOverlay");
@@ -434,8 +395,6 @@ async function openArticle(id){
     articleReaderTitle.textContent = article.title || "";
     articleReaderSubtitle.textContent = article.subtitle || "";
 
-    // Nội dung do admin soạn (HTML) — luôn sanitize trước khi
-    // render cho người dùng cuối để tránh XSS.
     articleReaderBody.innerHTML = window.DOMPurify
       ? DOMPurify.sanitize(article.content || "")
       : "";
@@ -459,9 +418,13 @@ loadArticles();
 loadCurrentSession();
 
 if(supabaseClient){
-  supabaseClient.auth.onAuthStateChange((event, session) => {
+  supabaseClient.auth.onAuthStateChange(async (event, session) => {
     if(event === 'SIGNED_OUT'){
       renderLoggedOutState();
+    }
+    if(event === 'SIGNED_IN' && session){
+      const profile = await fetchProfile(session.user.id);
+      renderLoggedInState(session.user, profile);
     }
   });
 }
