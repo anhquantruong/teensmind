@@ -32,7 +32,7 @@ if(navToggle && navLinks){
     closeNavMenu();
   });
 
-  ['navHome', 'navAbout', 'navPractice', 'navHelp'].forEach(id => {
+  ['navHome', 'navAbout', 'navHelp', 'navWiki', 'navExercise'].forEach(id => {
     const el = document.getElementById(id);
     if(el){
       el.addEventListener('click', () => {
@@ -140,7 +140,6 @@ typeHeroTitle(body.getAttribute('data-lang') || 'vi');
 const navHome = document.getElementById('navHome');
 const navAbout = document.getElementById('navAbout');
 const navHelp = document.getElementById('navHelp');
-const navPractice = document.getElementById('navPractice');
 const pageHome = document.getElementById('pageHome');
 const pageAbout = document.getElementById('pageAbout');
 const pageHelp = document.getElementById('pageHelp');
@@ -148,6 +147,23 @@ const pagePractice = document.getElementById('pagePractice');
 const navDirectory = document.getElementById('navDirectory');
 const pageDirectory = document.getElementById('pageDirectory');
 const pageResults = document.getElementById('pageResults');
+const navWiki = document.getElementById('navWiki');
+const navExercise = document.getElementById('navExercise');
+const pageWiki = document.getElementById('pageWiki');
+let pendingPageAfterLogin = null;
+const GATED_PAGES = ['wiki', 'practice'];
+
+function isAuthed(){ return document.body.classList.contains('is-authed'); }
+
+function goToGatedPage(page){
+  if(isAuthed()){
+    showPage(page);
+  } else {
+    pendingPageAfterLogin = page;
+    if (typeof openAuthModal === 'function') openAuthModal();
+  }
+}
+
 const footerDirectory = document.getElementById('footerDirectory');
 if (footerDirectory) {
   footerDirectory.addEventListener('click', (e) => {
@@ -200,15 +216,19 @@ function showPage(page) {
   pagePractice.classList.toggle('hidden', page !== 'practice');
   pageDirectory.classList.toggle('hidden', page !== 'directory');
   pageResults.classList.toggle('hidden', page !== 'results');
-  navHome.classList.remove('active');
-  navAbout.classList.remove('active');
-  navHelp.classList.remove('active');
-  if (navPractice) navPractice.classList.remove('active');
+  pageWiki.classList.toggle('hidden', page !== 'wiki');
+
+  [navHome, navAbout, navHelp, navWiki, navExercise].forEach(n => n && n.classList.remove('active'));
   if (navDirectory) navDirectory.classList.remove('active');
+
   if (page === 'home') navHome.classList.add('active');
   if (page === 'about') navAbout.classList.add('active');
   if (page === 'help') navHelp.classList.add('active');
-  if (page === 'practice' && navPractice) navPractice.classList.add('active');
+  if (page === 'wiki') {
+    navWiki.classList.add('active');
+    if (typeof loadArticles === 'function') loadArticles();
+  }
+  if (page === 'practice') navExercise.classList.add('active');
   if (page === 'directory') {
     if (navDirectory) navDirectory.classList.add('active');
     ensureDirectoryLoaded();
@@ -223,11 +243,8 @@ function showPage(page) {
 navHome.addEventListener('click', () => showPage('home'));
 navAbout.addEventListener('click', () => showPage('about'));
 navHelp.addEventListener('click', () => showPage('help'));
-if (navPractice) {
-  navPractice.addEventListener('click', () => {
-    window.location.href = 'app.html';
-  });
-}
+navWiki.addEventListener('click', () => goToGatedPage('wiki'));
+navExercise.addEventListener('click', () => goToGatedPage('practice'));
 if (navDirectory) {
   navDirectory.addEventListener('click', () => showPage('directory'));
 }

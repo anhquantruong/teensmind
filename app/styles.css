@@ -3510,3 +3510,187 @@ padding: 20px 24px 24px;
   .article-overlay{ padding:0; }
   .article-reader{ border-radius:0; min-height:100vh; padding:70px 20px 60px; }
 }
+
+/* ===== AUTH MODALS (quên mật khẩu / đặt lại mật khẩu / đổi mật khẩu) ===== */
+.auth-modal-overlay{
+  position: fixed;
+  inset: 0;
+  z-index: 250;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: radial-gradient(circle at 30% 20%, rgba(0,0,0,.06), rgba(0,0,0,.45));
+}
+.auth-modal-overlay.hidden{ display: none; }
+
+.auth-modal{
+  width: 100%;
+  max-width: 380px;
+  background: var(--bg, #fff);
+  border: 1px solid var(--border-strong, #e2e2e2);
+  border-radius: 18px;
+  padding: 30px 26px;
+  box-shadow: 0 24px 60px rgba(0,0,0,.18);
+  font-family: "Be Vietnam Pro", sans-serif;
+}
+
+.auth-modal h3{
+  font-family: "Fraunces", serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--ink, #101B2E);
+  margin: 0 0 10px;
+}
+
+.auth-modal p{
+  font-size: 0.86rem;
+  color: var(--text-muted, #666);
+  line-height: 1.55;
+  margin: 0 0 18px;
+}
+
+.auth-modal form{ display: flex; flex-direction: column; }
+
+.auth-modal input{
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 9px;
+  border: 1px solid var(--border-strong, #ddd);
+  font-size: .92rem;
+  font-family: inherit;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+}
+.auth-modal input:focus{ outline: none; border-color: var(--teal, #1f8a70); }
+
+.auth-modal .auth-submit{ margin-top: 4px; }
+
+.auth-modal-footer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+}
+
+.auth-modal-close,
+.auth-modal-home-link{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--text-muted, #999);
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color .15s ease;
+}
+.auth-modal-close:hover,
+.auth-modal-home-link:hover{ color: var(--teal, #1f8a70); }
+
+.auth-link-btn{
+  display: block;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--teal, #1f8a70);
+  cursor: pointer;
+  margin: 10px auto 0;
+  padding: 0;
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.auth-link-btn:hover{ color: var(--primary-deep, #0C2340); }
+
+/* ===== OTP 4-DIGIT INPUT ===== */
+.otp-input-group{
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 4px 0 18px;
+}
+
+.otp-digit{
+  width: 54px;
+  height: 62px;
+  text-align: center;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--ink, #101B2E);
+  border: 1.5px solid var(--border-strong, #ddd);
+  border-radius: 12px;
+  background: var(--bg, #fff);
+  padding: 0;
+  box-sizing: border-box;
+  transition: border-color .15s ease, box-shadow .15s ease, transform .1s ease;
+  -moz-appearance: textfield;
+}
+.otp-digit::-webkit-outer-spin-button,
+.otp-digit::-webkit-inner-spin-button{ -webkit-appearance: none; margin: 0; }
+
+.otp-digit:focus{
+  outline: none;
+  border-color: var(--teal, #1f8a70);
+  box-shadow: 0 0 0 4px rgba(31,138,112,0.14);
+}
+
+.otp-digit.filled{
+  border-color: var(--teal, #1f8a70);
+  background: rgba(31,138,112,0.04);
+}
+
+.otp-digit.otp-error{
+  border-color: var(--coral, #e0554f);
+  animation: otp-shake .3s ease;
+}
+
+@keyframes otp-shake{
+  0%, 100%{ transform: translateX(0); }
+  25%{ transform: translateX(-4px); }
+  75%{ transform: translateX(4px); }
+}
+
+#otpResendBtn{
+  margin: 4px auto 0;
+}
+#otpResendBtn:disabled{
+  color: var(--text-muted, #999);
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
+@media (max-width: 380px){
+  .otp-digit{ width: 46px; height: 54px; font-size: 1.4rem; }
+  .otp-input-group{ gap: 8px; }
+}
+
+/* ===== Header account avatar + lock icons ===== */
+.nav-lock-ic{ font-size:0.68rem; margin-left:6px; opacity:0.55; }
+body.is-authed .nav-lock-ic{ display:none; }
+
+.header-account-wrap{ position:relative; flex-shrink:0; }
+.header-account-wrap .app-account-trigger{
+  padding:0; border:none; background:none; cursor:pointer;
+  display:flex; align-items:center;
+}
+.header-account-wrap .app-account-panel{
+  position:absolute;
+  top:calc(100% + 12px);
+  bottom:auto;
+  left:auto; right:0;
+  width:280px;
+}
+.auth-modal-x{
+  position:absolute; top:14px; right:14px;
+  width:30px; height:30px; border-radius:50%;
+  border:none; background:var(--surface-2,#eee);
+  color:var(--ink-soft,#666); cursor:pointer;
+}

@@ -8,20 +8,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,340;9..144,440;9..144,560;9..144,640&family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="footer.css">
-  <link rel="stylesheet" href="feedback.css">
   <link rel="stylesheet" href="practice/grounding.css">
   <link rel="stylesheet" href="practice/practice.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
 </head>
 <body data-theme="light" data-lang="vi">
   <header class="site-header">
     <div class="header-top">
       <a class="wordmark" href="index.html" aria-label="PsyMapVN"> <img src="assets/navbar-logo.png" alt="Logo of PsyMapVN"></a>
-
       <button
         class="nav-toggle"
         id="navToggle"
@@ -53,10 +52,18 @@
             <i class="fa-solid fa-chevron-down nav-caret" aria-hidden="true"></i>
           </button>
         </div>
-        <div class="lang-toggle" id="langToggle">
-        <button class="header-cta" type="button" onclick="window.location.href='app.html'">
-        <span lang-el="vi">Ứng dụng</span><span lang-el="en">Application</span>
-        </button>
+        <div class="nav-item-wrap" data-menu="wiki">
+          <button class="nav-item" id="navWiki" type="button">
+          <span lang-el="vi">WikiPsy</span><span lang-el="en">WikiPsy</span>
+          <i class="fa-solid fa-lock nav-lock-ic"></i>
+          </button>
+        </div>
+        <div class="nav-item-wrap" data-menu="exercise">
+          <button class="nav-item" id="navExercise" type="button">
+          <span lang-el="vi">Bài tập sức khoẻ tinh thần</span><span lang-el="en">Wellness exercises</span>
+          <i class="fa-solid fa-lock nav-lock-ic"></i>
+          </button>
+        </div>
       </div>
         <div class="settings-wrap">
           <button class="nav-item" id="settingsBtn" type="button" aria-expanded="false">
@@ -95,8 +102,41 @@
           <button id="viBtn" class="active" type="button">🇻🇳</button>
           <button id="enBtn" type="button">🇬🇧</button>
         </div>
+        <div class="header-account-wrap" id="headerAccountWrap">
+  <button type="button" class="app-nav-item app-account-trigger" id="accountTrigger" aria-expanded="false" aria-controls="accountPanel">
+    <div class="app-user-avatar" id="appUserAvatar"><i class="fa-solid fa-user"></i></div>
+  </button>
+
+  <div class="app-account-panel" id="accountPanel">
+    <!-- chưa đăng nhập -->
+    <div id="guestBox">
+      <p style="font-size:.85rem;color:var(--ink-soft);margin:0 0 12px;">
+        <span lang-el="vi">Đăng nhập để mở khoá WikiPsy và Bài tập.</span>
+        <span lang-el="en">Log in to unlock WikiPsy and Exercises.</span>
+      </p>
+      <button type="button" class="auth-submit" id="openLoginBtn">
+        <span lang-el="vi">Đăng nhập / Đăng ký</span><span lang-el="en">Log in / Sign up</span>
+      </button>
+    </div>
+    <div id="userBox" class="hidden">
+      <div class="app-account-head">
+        <div class="app-user-avatar app-user-avatar--lg" id="appUserAvatarLg"></div>
+        <div class="app-account-headinfo">
+          <span class="app-user-name" id="appUserName">—</span>
+          <span class="app-user-email" id="appUserEmail">—</span>
+        </div>
+      </div>
+      <button type="button" id="changePasswordTrigger" class="app-nav-item">
+        <i class="fa-solid fa-key"></i>
+        <span lang-el="vi">Đổi mật khẩu</span><span lang-el="en">Change password</span>
+      </button>
+      <button type="button" class="app-logout-btn" id="appLogoutBtn">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <span lang-el="vi">Đăng xuất</span><span lang-el="en">Log out</span>
+      </button>
       </div>
     </div>
+      </div>
     </div>
     <div class="mega-panel" data-panel="home">
       <div class="mega-inner">
@@ -117,7 +157,7 @@
           <div class="mega-col">
             <h4><span lang-el="vi">Khám phá thêm</span><span lang-el="en">Explore</span></h4>
             <a href="#" onclick="event.preventDefault(); showPage('about');"><span lang-el="vi">Về PsyMapVN</span><span lang-el="en">About PsyMapVN</span></a>
-            <a href="#" onclick="event.preventDefault(); showPage('practice');"><span lang-el="vi">Bài tập thư giãn</span><span lang-el="en">Wellness exercises</span></a>
+                        <a href="#" onclick="event.preventDefault(); goToGatedPage('practice');"><span lang-el="vi">Bài tập thư giãn</span><span lang-el="en">Wellness exercises</span></a>
           </div>
         </div>
         <div class="mega-feature">
@@ -1397,36 +1437,23 @@
 
 
 </main>
-    <main class="page hidden" id="pageDirectory">
-    <div class="about-wrap directory-wrap">
-      <div class="about-eyebrow">
-        <span lang-el="vi">DANH MỤC</span>
-        <span lang-el="en">DIRECTORY</span>
-      </div>
-      <h1 class="about-h1">
-        <span lang-el="vi">Danh sách cơ sở tham vấn</span>
-        <span lang-el="en">Mental Health Clinics Directory</span>
-      </h1>
-      <p class="about-intro">
-        <span lang-el="vi">Danh sách cơ sở đã được PsyMapVN kiểm chứng. Đây là thông tin tham khảo — bạn chủ động liên hệ theo tốc độ riêng của mình.</span>
-        <span lang-el="en">Facilities verified by PsyMapVN. This is reference information — reach out at your own pace.</span>
-      </p>
-
-      <div class="directory-filters">
-        <input type="text" id="directorySearch" class="text-input directory-search"
-          placeholder="Tìm theo tên, địa chỉ...">
-        <select id="directoryTypeFilter" class="select-input"></select>
-        <select id="directoryProvFilter" class="select-input"></select>
-        <select id="directoryWardFilter" class="select-input"></select>
-      </div>
-
-      <div class="directory-status hidden" id="directoryStatus"></div>
-
-      <div class="directory-box">
-        <div class="directory-list" id="directoryList"></div>
-      </div>
+    <main class="page hidden" id="pageWiki">
+  <div class="about-wrap">
+    <div class="about-eyebrow">
+      <span lang-el="vi">KIẾN THỨC</span><span lang-el="en">KNOWLEDGE</span>
     </div>
-    </main>
+    <h1 class="about-h1"><span lang-el="vi">Bài đọc</span><span lang-el="en">Readings</span></h1>
+    <p class="about-intro">
+      <span lang-el="vi">Những bài viết ngắn giúp bạn hiểu thêm về sức khoẻ tâm thần.</span>
+      <span lang-el="en">Short articles to help you understand mental health better.</span>
+    </p>
+    <div class="reading-list" id="readingGrid">
+      <p class="reading-empty" id="readingLoading">
+        <span lang-el="vi">Đang tải bài viết...</span><span lang-el="en">Loading articles...</span>
+      </p>
+    </div>
+  </div>
+</main>
   <main class="page hidden" id="pageAbout">
     <div class="about-wrap">
 
@@ -1948,10 +1975,189 @@
       </p>
     </div>
   </div>
+<div class="auth-overlay hidden" id="authOverlay">
+    <div class="auth-card">
+    <button type="button" class="auth-modal-x" id="authOverlayClose" aria-label="Đóng">✕</button>
+      <div class="auth-logo">
+        <img src="assets/navbar-logo.png" alt="PsyMapVN">
+      </div>
+
+      <div class="auth-tabs">
+        <button type="button" class="auth-tab active" id="tabLogin">
+          <span lang-el="vi">Đăng nhập</span><span lang-el="en">Log in</span>
+        </button>
+        <button type="button" class="auth-tab" id="tabRegister">
+          <span lang-el="vi">Đăng ký</span><span lang-el="en">Sign up</span>
+        </button>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <form class="auth-form" id="loginForm">
+        <div class="auth-field">
+          <label><span lang-el="vi">Email</span><span lang-el="en">Email</span></label>
+          <input type="email" id="loginEmail" required placeholder="you@example.com">
+        </div>
+        <div class="auth-field">
+          <label><span lang-el="vi">Mật khẩu</span><span lang-el="en">Password</span></label>
+          <div class="auth-password-wrap">
+            <input type="password" id="loginPassword" required placeholder="••••••••">
+            <button type="button" class="auth-eye-btn" data-toggle="loginPassword" aria-label="Hiện/ẩn mật khẩu">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+        </div>
+        <p class="auth-error hidden" id="loginError"></p>
+        <button type="submit" class="auth-submit">
+          <span lang-el="vi">Đăng nhập</span><span lang-el="en">Log in</span>
+        </button>
+        <button type="button" id="forgotPasswordLink" class="auth-link-btn">Quên mật khẩu?</button>
+      </form>
+      </form>
+
+      <!-- REGISTER FORM -->
+      <form class="auth-form hidden" id="registerForm">
+        <div class="auth-field">
+          <label><span lang-el="vi">Họ tên</span><span lang-el="en">Full name</span></label>
+          <input type="text" id="regName" required placeholder="Nguyễn Văn A">
+        </div>
+        <div class="auth-field">
+          <label><span lang-el="vi">Email</span><span lang-el="en">Email</span></label>
+          <input type="email" id="regEmail" required placeholder="you@example.com">
+        </div>
+        <div class="auth-field">
+          <label><span lang-el="vi">Mật khẩu</span><span lang-el="en">Password</span></label>
+          <div class="auth-password-wrap">
+            <input type="password" id="regPassword" required placeholder="Tối thiểu 6 ký tự">
+            <button type="button" class="auth-eye-btn" data-toggle="regPassword" aria-label="Hiện/ẩn mật khẩu">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+        </div>
+        <div class="auth-field">
+          <label><span lang-el="vi">Nhập lại mật khẩu</span><span lang-el="en">Confirm password</span></label>
+          <div class="auth-password-wrap">
+            <input type="password" id="regPasswordConfirm" required placeholder="Nhập lại mật khẩu">
+            <button type="button" class="auth-eye-btn" data-toggle="regPasswordConfirm" aria-label="Hiện/ẩn mật khẩu">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+        </div>
+        <p class="auth-error hidden" id="registerError"></p>
+        <button type="submit" class="auth-submit">
+          <span lang-el="vi">Tạo tài khoản</span><span lang-el="en">Create account</span>
+        </button>
+      </form>
+      <p class="auth-note">
+        <span lang-el="vi">Bằng việc tiếp tục, bạn đồng ý với các điều khoản sử dụng của PsyMapVN.</span>
+        <span lang-el="en">By continuing, you agree to PsyMapVN's terms of use.</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- ===== MODAL: QUÊN MẬT KHẨU ===== -->
+  <div id="forgotPasswordOverlay" class="auth-modal-overlay hidden">
+    <div class="auth-modal">
+      <h3>Đặt lại mật khẩu</h3>
+      <p id="forgotPasswordIntro">Nhập email để nhận link đặt lại mật khẩu.</p>
+      <form id="forgotPasswordForm">
+        <input type="email" id="forgotEmail" placeholder="Email" required>
+        <p id="forgotPasswordError" class="auth-error hidden"></p>
+        <button type="submit" class="auth-submit">Gửi link</button>
+      </form>
+      <div class="auth-modal-footer">
+        <button type="button" id="forgotPasswordCloseBtn" class="auth-modal-close">
+          <i class="fa-solid fa-xmark"></i> Đóng
+        </button>
+        <a class="auth-modal-home-link" href="index.html">
+          <i class="fa-solid fa-house"></i> Về trang chủ
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MODAL: ĐẶT MẬT KHẨU MỚI (sau khi bấm link trong email) ===== -->
+  <div id="resetPasswordOverlay" class="auth-modal-overlay hidden">
+    <div class="auth-modal">
+      <h3>Tạo mật khẩu mới</h3>
+      <form id="resetPasswordForm">
+        <input type="password" id="newPassword" placeholder="Mật khẩu mới" required minlength="6">
+        <input type="password" id="newPasswordConfirm" placeholder="Nhập lại mật khẩu mới" required minlength="6">
+        <p id="resetPasswordError" class="auth-error hidden"></p>
+        <button type="submit" class="auth-submit">Xác nhận</button>
+      </form>
+      <div class="auth-modal-footer">
+        <a class="auth-modal-home-link" href="index.html">
+          <i class="fa-solid fa-house"></i> Về trang chủ
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MODAL: ĐỔI MẬT KHẨU (khi đã đăng nhập) ===== -->
+  <div id="changePasswordOverlay" class="auth-modal-overlay hidden">
+    <div class="auth-modal">
+      <h3>Đổi mật khẩu</h3>
+      <form id="changePasswordForm">
+        <input type="password" id="cpNewPassword" placeholder="Mật khẩu mới" required minlength="6">
+        <input type="password" id="cpNewPasswordConfirm" placeholder="Nhập lại mật khẩu mới" required minlength="6">
+        <p id="changePasswordError" class="auth-error hidden"></p>
+        <p id="changePasswordSuccess" class="hidden">Đổi mật khẩu thành công!</p>
+        <button type="submit" class="auth-submit">Lưu mật khẩu mới</button>
+      </form>
+      <div class="auth-modal-footer">
+        <button type="button" id="changePasswordCloseBtn" class="auth-modal-close">
+          <i class="fa-solid fa-xmark"></i> Đóng
+        </button>
+        <a class="auth-modal-home-link" href="index.html">
+          <i class="fa-solid fa-house"></i> Về trang chủ
+        </a>
+      </div>
+    </div>
+  </div>
+  <div id="otpOverlay" class="auth-modal-overlay hidden">
+    <div class="auth-modal">
+      <h3>Xác thực email</h3>
+      <p id="otpIntro">Nhập mã 6 số vừa được gửi tới email của bạn.</p>
+      <form id="otpForm">
+        <div class="otp-input-group" id="otpInputGroup">
+          <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-digit" data-index="0" autocomplete="one-time-code">
+          <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-digit" data-index="1">
+          <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-digit" data-index="2">
+          <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-digit" data-index="3">
+          <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-digit" data-index="4">
+          <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-digit" data-index="5">
+        </div>
+        <p id="otpError" class="auth-error hidden"></p>
+        <button type="submit" class="auth-submit">Xác nhận</button>
+      </form>
+      <button type="button" id="otpResendBtn" class="auth-link-btn">Gửi lại mã</button>
+      <div class="auth-modal-footer">
+        <button type="button" id="otpCloseBtn" class="auth-modal-close">
+          <i class="fa-solid fa-xmark"></i> Đóng
+        </button>
+        <a class="auth-modal-home-link" href="index.html">
+          <i class="fa-solid fa-house"></i> Về trang chủ
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="article-overlay hidden" id="articleOverlay">
+  <div class="article-reader">
+    <button class="article-close-btn" id="articleCloseBtn" aria-label="Đóng">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <img class="article-reader-cover hidden" id="articleReaderCover" alt="">
+    <span class="article-reader-eyebrow"><span lang-el="vi">BÀI ĐỌC</span><span lang-el="en">READING</span></span>
+    <h1 class="article-reader-title" id="articleReaderTitle"></h1>
+    <p class="article-reader-subtitle" id="articleReaderSubtitle"></p>
+    <div class="article-reader-body" id="articleReaderBody"></div>
+  </div>
+</div>
 <script src="questions.js"></script>
 <script src="script.js"></script>
 <script src="practice/grounding.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="results.js"></script>
+<script src="auth.js"></script>
 </body>
 </html>
