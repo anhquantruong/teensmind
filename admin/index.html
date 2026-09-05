@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.snow.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.min.js"></script>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>PsyMapVN — Admin</title>
+
+  <link rel="stylesheet" href="admin.css">
+</head>
+
+
+<body>
+
+  <aside class="admin-sidebar">
+
+    <div class="admin-brand">
+      <h1>PsyMapVN</h1>
+      <span>ADMIN</span>
+    </div>
+
+
+    <nav>
+
+      <button
+        class="nav-item active"
+        data-page="dashboard"
+      >
+        Dashboard Quản Lý 
+      </button>
+
+      <button class="nav-item" data-page="clinics">Danh sách Cơ sở</button>
+      <button class="nav-item" data-page="feedback">Feedback</button>
+      <button class="nav-item" data-page="articles">Bài viết</button>
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a href="../app/index.html">
+        ← Back to website
+      </a>
+
+      <button id="logoutButton">
+        Log out
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <main class="admin-main">
+    <section class="admin-page active" id="dashboard">
+
+      <header class="page-header">
+
+        <div>
+
+          <span class="eyebrow">
+            PsyMapVN
+          </span>
+
+          <h2>
+            Dashboard Quản Lý
+          </h2>
+
+          <p>
+            Quản lý các cơ sở phòng khám tham vấn tâm lý.
+          </p>
+
+        </div>
+
+      </header>
+
+
+      <div class="stats">
+
+        <div class="stat-card">
+
+          <span>
+            Tổng số cơ sở phòng khám
+          </span>
+
+          <strong id="clinicCount">
+            —
+          </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <span>
+            Chờ duyệt
+          </span>
+
+          <strong>
+            —
+          </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <span>
+            Tổng số Feedback
+          </span>
+
+          <strong id="feedbackCount">
+            —
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="welcome-card">
+
+        <span class="eyebrow">
+          TRANG CHỦ QUẢN LÝ ADMIN
+        </span>
+
+        <h3>
+          Quản lý danh sách phòng khám
+        </h3>
+
+        <p>
+          Thêm, cập nhật, và quản lý dữ liệu/thông tin các phòng khám
+        </p>
+
+        <button
+          class="primary-button"
+          data-page-link="clinics"
+        >
+          Quản lý dữ liệu ->
+        </button>
+
+      </div>
+
+    </section>
+    <section
+      class="admin-page"
+      id="clinics"
+    >
+
+      <header class="page-header clinic-header">
+
+        <div>
+
+          <span class="eyebrow">
+            PROVIDER DIRECTORY
+          </span>
+
+          <h2>
+            Danh bạ
+          </h2>
+
+          <p>
+            Add and manage mental health service providers.
+          </p>
+
+        </div>
+
+
+        <button
+          class="primary-button"
+          id="openAddClinic"
+        >
+          + Thêm cơ sở
+        </button>
+
+      </header>
+      <div class="clinic-toolbar">
+        <input
+          id="clinicSearch"
+          type="search"
+          placeholder="Tìm kiếm cơ sở phòng khám...."
+        >
+
+  <select id="clinicTypeFilter">
+    <option value="all">
+      Loại hình phong khám
+    </option>
+  </select>
+
+  <select id="clinicProvinceFilter">
+    <option value="all">
+      Tất cả Tỉnh / Thành
+    </option>
+  </select>
+
+  <select id="clinicWardFilter">
+    <option value="all">
+      Tất cả Phường
+    </option>
+  </select>
+
+</div>
+  <div class="clinic-table-wrapper">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>
+                Cơ sở tham vấn
+              </th>
+
+              <th>
+                Loại hình
+              </th>
+
+              <th>
+                Địa chỉ
+              </th>
+
+              <th>
+                SĐT
+              </th>
+
+              <th>
+                Actions
+              </th>
+
+            </tr>
+
+          </thead>
+
+
+          <tbody id="clinicTable"></tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+    <section
+      class="admin-page"
+      id="feedback"
+    >
+
+      <header class="page-header">
+
+        <span class="eyebrow">
+          FEEDBACK TỪ NGƯỜI DÙNG
+        </span>
+
+        <h2>
+          Feedback
+        </h2>
+
+        <p>
+          Review các feedbacks từ người dùng. Dòng đậm là feedback
+          chưa được mở xem.
+        </p>
+
+      </header>
+      <div class="clinic-toolbar feedback-toolbar">
+
+        <input
+          id="feedbackSearch"
+          type="search"
+          placeholder="Tìm kiếm feedback...."
+        >
+
+        <select id="feedbackStatusFilter">
+          <option value="all">
+            Tất cả trạng thái
+          </option>
+
+          <option value="new">
+            Mới
+          </option>
+
+          <option value="reviewed">
+            Đã xem
+          </option>
+
+          <option value="resolved">
+            Đã xử lý
+          </option>
+        </select>
+
+      </div>
+      <div class="clinic-table-wrapper">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>
+                Người gửi
+              </th>
+
+              <th>
+                Chủ đề
+              </th>
+
+              <th>
+                Ngày gửi
+              </th>
+
+              <th>
+                Trạng thái
+              </th>
+
+              <th>
+                Actions
+              </th>
+
+            </tr>
+
+          </thead>
+
+
+          <tbody id="feedbackTable"></tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+    <section class="admin-page" id="articles">
+  <header class="page-header clinic-header">
+    <div>
+      <span class="eyebrow">READINGS</span>
+      <h2>Bài viết</h2>
+      <p>Viết và quản lý các bài đọc hiển thị cho người dùng.</p>
+    </div>
+    <button class="primary-button" id="openAddArticle">+ Viết bài mới</button>
+  </header>
+
+  <div class="clinic-toolbar article-toolbar">
+    <input id="articleSearch" type="search" placeholder="Tìm kiếm bài viết....">
+    <select id="articleStatusFilter">
+      <option value="all">Tất cả trạng thái</option>
+      <option value="draft">Bản nháp</option>
+      <option value="published">Đã đăng</option>
+    </select>
+  </div>
+
+  <div class="clinic-table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Bài viết</th>
+          <th>Trạng thái</th>
+          <th>Cập nhật</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="articleTable"></tbody>
+    </table>
+  </div>
+</section>
+  </main>
+  <div
+    class="modal hidden"
+    id="clinicModal"
+  >
+
+    <div class="modal-overlay"></div>
+
+
+    <div class="modal-card">
+
+      <div class="modal-header">
+
+        <div>
+
+          <span class="eyebrow">
+            PROVIDER DIRECTORY
+          </span>
+
+          <h2>
+            Add clinic
+          </h2>
+
+        </div>
+
+
+        <button
+          id="closeClinicModal"
+          class="close-button"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <form id="clinicForm">
+        <div class="form-section">
+
+          <h3>
+            Basic information
+          </h3>
+
+
+          <label>
+
+            Clinic name *
+
+            <input
+              name="clinic_name"
+              required
+            >
+
+          </label>
+
+
+          <label>
+
+            Clinic type *
+
+            <select
+              name="clinic_type"
+              required
+            >
+
+              <option value="">
+                Select type
+              </option>
+
+              <option>
+                Bệnh viện công lập
+              </option>
+
+              <option>
+                Bệnh viện tư nhân
+              </option>
+
+              <option>
+                Phòng khám tư nhân
+              </option>
+
+              <option>
+                Tổ chức cộng đồng
+              </option>
+
+            </select>
+
+          </label>
+
+
+          <label>
+
+            Description
+
+            <textarea
+              name="description"
+              rows="4"
+            ></textarea>
+
+          </label>
+
+        </div>
+        <div class="form-section">
+
+          <h3>
+            Location
+          </h3>
+
+
+          <label>
+
+            Address *
+
+            <input
+              name="address"
+              required
+            >
+
+          </label>
+
+
+          <label>
+
+            Old address
+
+            <input
+              name="old_address"
+            >
+
+          </label>
+
+
+          <div class="form-grid">
+
+            <label>
+
+              Province
+
+              <select
+                id="formProvince"
+                name="prov"
+                required
+              >
+                <option value="">
+                  Chọn địa phương
+                </option>
+              </select>
+
+            </label>
+
+
+            <label>
+
+              Ward
+
+              <select
+                id="formWard"
+                name="ward"
+                disabled
+              >
+                <option value="">
+                  Chọn phường
+                </option>
+              </select>
+
+            </label>
+
+          </div>
+
+
+          <div class="form-grid">
+
+            <label>
+
+              Latitude
+
+              <input
+                name="latitude"
+                type="number"
+                step="any"
+              >
+
+            </label>
+
+
+            <label>
+
+              Longitude
+
+              <input
+                name="longitude"
+                type="number"
+                step="any"
+              >
+
+            </label>
+
+            <label>
+
+              Google Maps link
+
+              <input
+                name="ggmaps_link"
+                type="url"
+                placeholder="https://maps.google.com/?q=..."
+                required
+              >
+
+            </label>
+          </div>
+
+        </div>
+        <div class="form-section">
+
+          <h3>
+            Contact
+          </h3>
+
+
+          <div class="form-grid">
+
+            <label>
+
+              Phone
+
+              <input
+                name="phone"
+                type="tel"
+                required
+              >
+
+            </label>
+
+
+            <label>
+
+              Website
+
+              <input
+                name="website"
+                type="url"
+                required
+              >
+
+            </label>
+
+          </div>
+
+        </div>
+        <div class="form-section">
+
+          <h3>
+            Service information
+          </h3>
+
+          <label>
+
+            Operating hours
+
+            <textarea
+              name="operating_hours"
+              rows="3"
+            ></textarea>
+
+          </label>
+
+
+          <label>
+
+            Target groups
+
+            <textarea
+              name="target_groups"
+              rows="3"
+              placeholder="Children, adolescents, adults..."
+              required
+            ></textarea>
+
+          </label>
+
+        </div>
+        <div class="form-section">
+
+          <h3>
+            Khoảng giá tham vấn
+          </h3>
+
+          <p class="field-hint">
+            Nhập khoảng giá dạng Từ — Đến (VNĐ). Bỏ trống nếu miễn phí /
+            theo bảo hiểm y tế. Đây là cột riêng (<code>price</code>) dùng
+            để hiển thị khoảng giá có cấu trúc trên trang kết quả, khác
+            với ô "Pricing" mô tả tự do ở trên.
+          </p>
+
+          <div class="form-grid">
+
+            <label>
+
+              Từ (VNĐ)
+
+              <input
+                name="price_from"
+                type="number"
+                min="0"
+                step="1000"
+                placeholder="300000"
+              >
+
+            </label>
+
+
+            <label>
+
+              Đến (VNĐ)
+
+              <input
+                name="price_to"
+                type="number"
+                min="0"
+                step="1000"
+                placeholder="600000"
+              >
+
+            </label>
+
+          </div>
+
+        </div>
+        <div class="form-section">
+
+          <h3>
+            Dịch vụ thăm khám
+          </h3>
+
+          <p class="field-hint">
+            Chọn các chủ đề / dịch vụ thăm khám mà cơ sở này hỗ trợ.
+            Danh sách này khớp với các chủ đề trong bảng câu hỏi sàng
+            lọc, dùng để gợi ý chính xác hơn cho người dùng.
+          </p>
+
+          <div class="checkbox-grid">
+
+            <label class="checkbox-item">
+              <input type="checkbox" name="service" value="Lo âu">
+              Lo âu <span class="checkbox-en">(Anxiety)</span>
+            </label>
+
+            <label class="checkbox-item">
+              <input type="checkbox" name="service" value="Trầm cảm">
+              Trầm cảm <span class="checkbox-en">(Depression)</span>
+            </label>
+
+            <label class="checkbox-item">
+              <input type="checkbox" name="service" value="Stress">
+              Stress <span class="checkbox-en">(Stress)</span>
+            </label>
+
+            <label class="checkbox-item">
+              <input type="checkbox" name="service" value="Kiệt sức">
+              Kiệt sức <span class="checkbox-en">(Burnout)</span>
+            </label>
+
+            <label class="checkbox-item">
+              <input type="checkbox" name="service" value="Khủng hoảng cảm xúc">
+              Khủng hoảng cảm xúc <span class="checkbox-en">(Emotional crisis)</span>
+            </label>
+
+            <label class="checkbox-item">
+              <input type="checkbox" name="service" value="Mất ngủ">
+              Mất ngủ <span class="checkbox-en">(Insomnia)</span>
+            </label>
+
+            <label class="checkbox-item">
+              <input type="checkbox" name="service" value="Quan hệ gia đình">
+              Quan hệ gia đình <span class="checkbox-en">(Family relationships)</span>
+            </label>
+
+            <label class="checkbox-item">
+              <input type="checkbox" name="service" value="Quan hệ tình cảm">
+              Quan hệ tình cảm <span class="checkbox-en">(Romantic relationships)</span>
+            </label>
+
+            <label class="checkbox-item">
+              <input type="checkbox" name="service" value="Hôn nhân">
+              Hôn nhân <span class="checkbox-en">(Marriage)</span>
+            </label>
+
+            <label class="checkbox-item">
+              <input type="checkbox" name="service" value="Nuôi dạy con">
+              Nuôi dạy con <span class="checkbox-en">(Parenting)</span>
+            </label>
+
+            <label class="checkbox-item">
+              <input type="checkbox" name="service" value="Sang chấn">
+              Sang chấn <span class="checkbox-en">(Trauma)</span>
+            </label>
+
+            <label class="checkbox-item">
+              <input type="checkbox" name="service" value="ADHD">
+              ADHD <span class="checkbox-en">(ADHD)</span>
+            </label>
+
+            <label class="checkbox-item">
+              <input type="checkbox" name="service" value="Phổ Tự kỷ">
+              Phổ Tự kỷ <span class="checkbox-en">(Autism Spectrum Disorder)</span>
+            </label>
+
+            <label class="checkbox-item">
+              <input type="checkbox" name="service" value="Rối loạn ăn uống">
+              Rối loạn ăn uống <span class="checkbox-en">(Eating disorders)</span>
+            </label>
+
+            <label class="checkbox-item">
+              <input type="checkbox" name="service" value="Nghiện">
+              Nghiện <span class="checkbox-en">(Addiction)</span>
+            </label>
+
+            <label class="checkbox-item">
+              <input type="checkbox" name="service" value="Khó khăn trong học tập">
+              Khó khăn trong học tập <span class="checkbox-en">(Academic difficulties)</span>
+            </label>
+
+            <label class="checkbox-item">
+              <input type="checkbox" name="service" value="Khó khăn trong công việc">
+              Khó khăn trong công việc <span class="checkbox-en">(Work difficulties)</span>
+            </label>
+
+            <label class="checkbox-item">
+              <input type="checkbox" name="service" value="Khác">
+              Khác <span class="checkbox-en">(Other)</span>
+            </label>
+
+          </div>
+
+        </div>
+        <div class="form-section">
+
+          <h3>
+            Licensing
+          </h3>
+
+
+          <div class="form-grid">
+
+            <label>
+
+              License number
+
+              <input
+                name="license_number"
+              >
+
+            </label>
+
+
+            <label>
+
+              License issue date
+
+              <input
+                name="license_issue_date"
+                type="date"
+              >
+
+            </label>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-actions">
+
+          <button
+            type="button"
+            class="secondary-button"
+            id="cancelClinic"
+          >
+            Cancel
+          </button>
+
+
+          <button
+            type="submit"
+            class="primary-button"
+          >
+            Add clinic
+          </button>
+
+        </div>
+
+
+      </form>
+
+    </div>
+
+  </div>
+  <div
+    class="modal hidden"
+    id="feedbackDetailModal"
+  >
+
+    <div class="modal-overlay" id="feedbackDetailOverlay"></div>
+
+
+    <div class="modal-card feedback-detail-card">
+
+      <div class="modal-header">
+
+        <div>
+
+          <span class="eyebrow">
+            FEEDBACK
+          </span>
+
+          <h2>
+            Chi tiết feedback
+          </h2>
+
+        </div>
+
+
+        <button
+          id="closeFeedbackDetail"
+          class="close-button"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div class="feedback-detail-grid">
+        <div class="feedback-detail-box">
+
+          <h3>
+            Người dùng đã gửi
+          </h3>
+
+
+          <dl class="feedback-meta">
+
+            <div>
+              <dt>Tên</dt>
+              <dd id="fbDetailName">—</dd>
+            </div>
+
+            <div>
+              <dt>Email</dt>
+              <dd id="fbDetailEmail">—</dd>
+            </div>
+
+            <div>
+              <dt>Chủ đề</dt>
+              <dd id="fbDetailType">—</dd>
+            </div>
+
+            <div>
+              <dt>Ngày gửi</dt>
+              <dd id="fbDetailDate">—</dd>
+            </div>
+
+          </dl>
+
+
+          <div class="feedback-message-box" id="fbDetailMessage"></div>
+
+        </div>
+        <div class="feedback-detail-box">
+
+          <h3>
+            Trả lời
+          </h3>
+
+          <p class="feedback-hint" id="fbReplyHint">
+            Nội dung này sẽ được lưu lại nội bộ và feedback sẽ
+            tự động chuyển sang "Đã xử lý". Gửi email thật sẽ
+            được kết nối ở bản sau.
+          </p>
+
+          <textarea
+            id="fbReplyText"
+            rows="10"
+            placeholder="Nhập nội dung trả lời cho người dùng..."
+          ></textarea>
+
+          <div class="feedback-detail-actions">
+
+            <button
+              type="button"
+              class="secondary-button"
+              id="fbCancelReply"
+            >
+              Đóng
+            </button>
+
+            <button
+              type="button"
+              class="primary-button"
+              id="fbSendReply"
+            >
+              Gửi & Đánh dấu hoàn thành
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal hidden" id="articleModal">
+  <div class="modal-overlay" id="articleModalOverlay"></div>
+  <div class="modal-card article-modal-card">
+    <div class="modal-header">
+      <div>
+        <span class="eyebrow">READINGS</span>
+        <h2 id="articleModalTitle">Viết bài mới</h2>
+      </div>
+      <button id="closeArticleModal" class="close-button">×</button>
+    </div>
+
+    <form id="articleForm">
+      <div class="form-section">
+        <h3>Thông tin bài viết</h3>
+        <label>
+          Tiêu đề *
+          <input name="title" required placeholder="VD: Hiểu về lo âu trong công việc">
+        </label>
+        <label>
+          Sapo / mô tả ngắn *
+          <textarea name="subtitle" rows="2" required
+            placeholder="Câu mô tả ngắn hiện dưới tiêu đề ở trang danh sách"></textarea>
+        </label>
+        <div class="form-grid">
+          <label>
+            Ảnh bìa (URL)
+            <input name="cover_image_url" type="url" placeholder="https://...">
+          </label>
+          <label>
+            Trạng thái
+            <select name="status">
+              <option value="draft">Bản nháp</option>
+              <option value="published">Đăng ngay</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3>Nội dung</h3>
+        <div id="articleEditor" class="article-editor-box"></div>
+        <p class="field-hint">
+          Bôi đen văn bản để định dạng, hoặc dùng nút ảnh trên thanh công cụ để chèn ảnh
+          vào đúng vị trí con trỏ — giống chỉnh sửa bài trên Wikipedia. Nội dung được lưu
+          dưới dạng HTML.
+        </p>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="secondary-button" id="cancelArticle">Cancel</button>
+        <button type="submit" class="primary-button">Lưu bài viết</button>
+      </div>
+    </form>
+  </div>
+</div>
+  <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+/* =========================================================
+   PRACTICE PAGE
+   ========================================================= */
+
+.practice-page {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 56px 24px 88px;
+}
+
+
+/* HEADER */
+
+.practice-header {
+  max-width: 720px;
+  margin-bottom: 70px;
+}
+
+.practice-eyebrow {
+  display: block;
+
+  margin-bottom: 20px;
+
+  color: var(--teal);
+
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.practice-header h1 {
+  margin: 0 0 22px;
+
+  font-family: 'Fraunces', serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 500;
+
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+
+  color: var(--ink);
+}
+
+.practice-header p {
+  max-width: 580px;
+
+  margin: 0;
+
+  color: var(--ink-soft);
+
+  font-size: 0.96rem;
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.practice-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 22px;
+}
+
+
+.practice-card {
+  position: relative;
+
+  min-height: 330px;
+
+  padding: 30px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  border: 1px solid var(--border);
+  border-radius: 20px;
+
+  background: var(--surface);
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.practice-card:hover {
+  transform: translateY(-4px);
+
+  border-color: var(--plum);
+
+  box-shadow:
+    0 16px 40px var(--shadow);
+}
+
+
+.practice-card-number {
+  color: var(--ink-soft);
+
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+
+.practice-card-content {
+  margin-top: 50px;
+}
+
+
+.practice-card-label {
+  display: inline-block;
+
+  margin-bottom: 12px;
+
+  color: var(--teal);
+
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+
+.practice-card h2 {
+  margin: 0 0 12px;
+
+  font-family: 'Fraunces', serif;
+
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 500;
+  line-height: 1.15;
+
+  color: var(--ink);
+}
+
+
+.practice-card p {
+  max-width: 430px;
+
+  margin: 0 0 24px;
+
+  color: var(--ink-soft);
+
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+
+/* BUTTON */
+
+.practice-card-button {
+  display: inline-flex;
+
+  align-items: center;
+  gap: 9px;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+  color: var(--plum);
+
+  font-family: inherit;
+
+  font-size: 0.82rem;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+
+.practice-card-button i {
+  font-size: 0.7rem;
+
+  transition:
+    transform 0.2s ease;
+}
+
+
+.practice-card-button:hover i {
+  transform: translateX(4px);
+}
+
+
+/* COMING SOON */
+
+.practice-card-placeholder {
+  opacity: 0.65;
+}
+
+.practice-card-placeholder:hover {
+  transform: none;
+
+  border-color: var(--border);
+
+  box-shadow: none;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+
+  .practice-page {
+    padding: 60px 24px 90px;
+  }
+
+  .practice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .practice-header {
+    margin-bottom: 48px;
+  }
+
+}

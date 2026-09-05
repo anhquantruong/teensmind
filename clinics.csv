@@ -1,0 +1,120 @@
+clinic_name,clinic_type,address,old_address,ward,prov,latitude,longitude,price,phone,website,operating_hours,license_number,license_issue_date,description,target_groups,ggmaps_link,min_age,max_age,address_2,address_3,psychiatris_or_psychologist
+Bệnh viện Đại học Y Dược TPHCM,Bệnh viện công lập,"215 Hồng Bàng, Phường Chợ Lớn, Thành phố Hồ Chí Minh","215 Hồng Bàng, Phường 11, Quận 5",Phường Chợ Lớn,Thành phố Hồ Chí Minh,10.7554425,106.6644612,"20,000₫-200,000₫ (tuỳ loại hình khám thường/dịch vụ)","1900 7178
+",https://bvdaihoc.com.vn,"Thứ 2 - Thứ 6: 4h30 - 16h30
+Thứ 7: 4h30 - 11h30",,,"Cung cấp dịch vụ đánh giá sức khoẻ tâm thần; Thăm khám, chữa bệnh về tâm lý/ tầm thần",Nhân viên Y tế; Người bệnh mạn tính; Người có H; Cộng đồng LGBTQ+; Nạn nhân buôn bán người,https://www.google.com/maps/search/?api=1&query=215%20H%E1%BB%93ng%20B%C3%A0ng%2C%20Ph%C6%B0%E1%BB%9Dng%20Ch%E1%BB%A3%20L%E1%BB%9Bn%2C%20Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh,16,,,,Psychiatrist; Psychologist
+Bệnh viện Chỉnh hình PHCN,Bệnh viện công lập,"1A Lý Thường Kiệt, Phường Tân Sơn Nhất, Thành phố Hồ Chí Minh","1A Lý Thường Kiệt, Phường 7, Quận Tân Bình",Phường Tân Sơn Nhất,Thành phố Hồ Chí Minh,10.7888141,106.6531156,,(028) 3971 2960,https://benhvien1a.com/dat-lich-kham/,"Thứ 2 - Thứ 6: 7h00 - 16h30
+Thứ 7: 7h00 - 11h30",,,,Nhân viên Y tế; Người bệnh mạn tính; Người có H; Cộng đồng LGBTQ+; Nạn nhân buôn bán người,,,,,,
+Bệnh viện Quân Y 175,Bệnh viện công lập,"786 Nguyễn Kiệm, Phường Hạnh Thông, Thành phố Hồ Chí Minh (Quận Gò Vấp cũ)","786 Nguyễn Kiệm, Phường 3, Quận Gò Vấp",Phường Hạnh Thông,Thành phố Hồ Chí Minh,10.8175833,106.6805148,"200,000₫-600,000₫ (khám chuyên khoa; giá thay đổi theo BHYT/dịch vụ)","1900 1175
+",,"Thứ 2 - Thứ 6: 
+  - Sáng: 7h00 - 11h30
+  - Chiều: 13h30 - 16h30
+
+Thứ 7: 7h00 - 11h30
+
+Cấp cứu 24/24",,,"Bệnh viện đa khoa tuyến cuối của Quân đội khu vực phía Nam, tiếp nhận cả quân nhân và người dân. Có Khoa Tâm thần (A6) riêng biệt cùng Khoa Nội thần kinh (A7).",Nhân viên Y tế; Người bệnh mạn tính; Người có H; Cộng đồng LGBTQ+; Nạn nhân buôn bán người,,16,,,,Psychiatrist
+Bệnh viện Thống Nhất,Bệnh viện công lập,"Số 1 Lý Thường Kiệt, Phường Tân Sơn Nhất, Thành phố Hồ Chí Minh","Số 1 Lý Thường Kiệt, Phường 7, Quận Tân Bình",Phường Tân Sơn Nhất,Thành phố Hồ Chí Minh,10.7915459,106.6534742,,"028 3869 0277
+CSKH 1: 1900 2345 47
+CSKH 2: 1900 6163 95
+",,Thứ 2 - Thứ 7: 6h00 - 16h30,,,"Bệnh viện công lập lâu đời (từ 1975) trực thuộc Bộ Y tế, chăm sóc cán bộ trung cao cấp và người dân. Có Khoa Nội Thần kinh & Ngoại Thần kinh (đột quỵ, phẫu thuật thần kinh) nhưng chưa xác nhận công khai khoa Tâm thần/Tâm lý riêng.",Nhân viên Y tế; Người bệnh mạn tính; Người có H; Cộng đồng LGBTQ+; Nạn nhân buôn bán người,,16,,,,
+Bênh viện 7A,Bệnh viện công lập,"466 Nguyễn Trải, Phường An Đông, Thành phố Hồ Chí Minh",,Phường An Đông,Thành phố Hồ Chí Minh,10.7558263,106.6709538,,"028 3924 4879
+Hotline tư vấn: 028 38366789
+",,,,,,Nhân viên Y tế; Người bệnh mạn tính; Người có H; Cộng đồng LGBTQ+; Nạn nhân buôn bán người,,,,,,
+Bệnh viện Nhân Dân 115,Bệnh viện công lập,"527 Sư Vạn Hạnh, Phường Hoà Hưng, Thành phố Hồ Chí Minh",,Phường Hoà Hưng,Thành phố Hồ Chí Minh,10.7749334,106.6675653,,"1900 099983
+Số điện thoại để đăng ký khám bệnh: (028)38 683 496",,,,,"Bệnh viện đa khoa hạng I, mũi nhọn Tim mạch - Thần kinh - Thận niệu - Ung bướu. Có Trung tâm/Khoa Thần kinh (đột quỵ, nội thần kinh, ngoại thần kinh) nhưng chưa xác nhận công khai có khoa Tâm thần/Tâm lý lâm sàng riêng - nên gọi trước để hỏi cụ thể.",Nhân viên Y tế; Người bệnh mạn tính; Người có H; Cộng đồng LGBTQ+; Nạn nhân buôn bán người,,,,,,
+Bệnh viện Bưu Điện Thành Phố,Bệnh viện công lập,"Lô B9, Đường Thành Thái, Phường Hoà Hưng, Thành phố Hồ Chí Minh",,Phường Hoà Hưng,Thành phố Hồ Chí Minh,10.780271,106.6604498,,"Số điện thoại 1: 028 3864 9834
+Số điện thoại 2: 028 3864 9836
+Số điện thoại 3: 028 3864 9837
+",www.bvdkbuudien.com.vn,,,,,Nhân viên Y tế; Người bệnh mạn tính; Người có H; Cộng đồng LGBTQ+; Nạn nhân buôn bán người,,,,,,
+Bệnh viện 30/4,Bệnh viện công lập,"9 Sư Vạn Hạnh, Phường An Đông, Thành phố Hồ Chí Minh",,Phường An Đông,Thành phố Hồ Chí Minh,10.7591033,106.6730315,,"Số điện thoại 1: 069 333 64 68
+Số điện thoại 2: 069 333 64 68",,,,,,Nhân viên Y tế; Người bệnh mạn tính; Người có H; Cộng đồng LGBTQ+; Nạn nhân buôn bán người,,,,,,
+Bệnh viện Nhân Dân Gia Định,Bệnh viện công lập,"Số 1 Nơ Trang Long, Phường Gia Định, Thành phố Hồ Chí Minh",,Phường Gia Định,Thành phố Hồ Chí Minh,10.8037471,106.6941388,"30,000₫-230,000₫ (khám thường - khám chuyên khoa)",Số điện thoại: 02838412692 ,,,,,"Bệnh viện đa khoa hạng I lâu đời (từ đầu TK 20). Có Khoa Nội Thần Kinh chuyên sâu (đột quỵ, thần kinh trung ương/ngoại biên) nhưng chưa xác nhận công khai có khoa Tâm thần/Tâm lý lâm sàng riêng.",Nhân viên Y tế; Người bệnh mạn tính; Người có H; Cộng đồng LGBTQ+; Nạn nhân buôn bán người,,16,,,,
+Bệnh viện Nguyễn Tri Phương,Bệnh viện công lập,"468 Nguyễn Trãi, Phường An Đông, Thành phố Hồ Chí Minh",,Phường An Đông,Thành phố Hồ Chí Minh,10.7550025,106.6705345,,,,,,,"Bệnh viện đa khoa hạng I tuyến thành phố. Có Khoa Tâm thần kinh chuyên khám và điều trị cả bệnh lý thần kinh (động kinh, Parkinson, sa sút trí tuệ) lẫn rối loạn tâm thần/tâm lý (trầm cảm, tâm thần phân liệt, rối loạn lưỡng cực, rối loạn lo âu).",Nhân viên Y tế; Người bệnh mạn tính; Người có H; Cộng đồng LGBTQ+; Nạn nhân buôn bán người,,16,,,,Psychiatrist
+Bệnh viện Tâm thần TP. HCM,Bệnh viện công lập,"766 Võ Văn Kiệt, Phường Chợ Quán, Thành phố Hồ Chí Minh (cơ sở chính, nằm trong khuôn viên BV Bệnh Nhiệt Đới)","766 Võ Văn Kiệt, Phường 1, Quận 5",Phường Chợ Quán,Thành phố Hồ Chí Minh,10.7524817,106.6783073,"20,000₫-100,000₫ (khám thường - khám dịch vụ/đặc biệt; bảng giá công bố 2012, có thể đã điều chỉnh, nên gọi xác nhận)",(028) 3923 4675 / Đường dây nóng: 1900 9095,https://bvtt-tphcm.org.vn,"Thứ 2 - Thứ 7: Sáng 7h00-11h30, Chiều 13h30-15h30
+Cấp cứu 24/24",,,"Bệnh viện chuyên khoa tâm thần hạng I, tuyến đầu khu vực phía Nam; khám và điều trị trầm cảm, rối loạn lo âu, tâm thần phân liệt, rối loạn lưỡng cực, nghiện chất, sức khoẻ tâm thần trẻ em; có Khoa Tâm lý riêng thực hiện trắc nghiệm tâm lý chuẩn hoá và trị liệu tâm lý.",Người lớn; Trẻ em; Người bệnh mạn tính về tâm thần,https://www.google.com/maps/search/?api=1&query=766%20V%C3%B5%20V%C4%83n%20Ki%E1%BB%87t%2C%20Ph%C6%B0%E1%BB%9Dng%20Ch%E1%BB%A3%20Qu%C3%A1n%2C%20Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh,0,,"Cơ sở 2 (nội trú): Ấp 6, Xã Lê Minh Xuân, Bình Chánh, TP.HCM","Cơ sở 3: 165B Phan Đăng Lưu, Phường Cầu Kiệu, TP.HCM",Psychiatrist; Psychologist
+Bệnh viện đa khoa khu vực Hóc Môn,Bệnh viện công lập,"79 Bà Triệu, Xã Hóc Môn, Thành phố Hồ Chí Minh",,Xã Hóc Môn,Thành phố Hồ Chí Minh,10.8827069,106.5932745,,(028) 3891 4208,https://bvdkhocmon.vn,,,,"Bệnh viện đa khoa khu vực (bệnh viện cửa ngõ) tuyến Sở Y tế TP.HCM, mới đưa vào hoạt động cơ sở mới từ 2024; chưa xác nhận công khai khoa Tâm thần/Tâm lý riêng - cần liên hệ trực tiếp.",Nhân viên Y tế; Người bệnh mạn tính; Người có H; Cộng đồng LGBTQ+; Nạn nhân buôn bán người,https://www.google.com/maps/search/?api=1&query=79%20B%C3%A0%20Tri%E1%BB%87u%2C%20X%C3%A3%20H%C3%B3c%20M%C3%B4n%2C%20Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh,,,,,
+Bệnh viện Nguyễn Trãi,Bệnh viện công lập,,,,Thành phố Hồ Chí Minh,,,,,,,,,,Nhân viên Y tế; Người bệnh mạn tính; Người có H; Cộng đồng LGBTQ+; Nạn nhân buôn bán người,,,,,,
+Bệnh viện đa khoa khu vực Củ Chi,Bệnh viện công lập,"9A Nguyễn Văn Hoài, Ấp Bàu Tre 2, Xã Tân An Hội, Thành phố Hồ Chí Minh",,Xã Tân An Hội,Thành phố Hồ Chí Minh,10.9757269,106.4770729,,,,,,,"Bệnh viện đa khoa khu vực hạng 2 trực thuộc Sở Y tế TP.HCM; danh mục chuyên khoa sâu có nêu rõ 'Tâm thần' cùng Ngoại thần kinh, Nội thận, Tim mạch can thiệp - có khả năng cung cấp dịch vụ khám tâm thần, nhưng nên gọi xác nhận cụ thể bác sĩ/lịch khám.",Nhân viên Y tế; Người bệnh mạn tính; Người có H; Cộng đồng LGBTQ+; Nạn nhân buôn bán người,https://www.google.com/maps/search/?api=1&query=9A%20Nguy%E1%BB%85n%20V%C4%83n%20Ho%C3%A0i%2C%20%E1%BA%A4p%20B%C3%A0u%20Tre%202%2C%20X%C3%A3%20T%C3%A2n%20An%20H%E1%BB%99i%2C%20Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh,16,,,,Psychiatrist
+Bệnh viện đa khoa khu vực Thủ Đức,Bệnh viện công lập,"64 Lê Văn Chí, Phường Linh Trung, Thành phố Hồ Chí Minh (cơ sở mới, ~1000 giường)",,Phường Linh Trung,Thành phố Hồ Chí Minh,10.8614915,106.7804391,,,,,,,"Bệnh viện đa khoa khu vực (cửa ngõ) mới xây, quy mô 1.000 giường, tiếp nhận nhiều bệnh nhân từ Đồng Nai/Bình Dương; chưa xác nhận công khai khoa Tâm thần/Tâm lý riêng.",Nhân viên Y tế; Người bệnh mạn tính; Người có H; Cộng đồng LGBTQ+; Nạn nhân buôn bán người,https://www.google.com/maps/search/?api=1&query=64%20L%C3%AA%20V%C4%83n%20Ch%C3%AD%2C%20Ph%C6%B0%E1%BB%9Dng%20Linh%20Trung%2C%20Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh,,,,,
+Bệnh viện đa khoa Hoàn Mỹ Sài Gòn,Bệnh viện tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,"Cung cấp dịch vụ đánh giá sức khoẻ tâm thần; Thăm khám, chữa bệnh về tâm lý/ tầm thần",Nhân viên Y tế; Người bệnh mạn tính; Người có H; Cộng đồng LGBTQ+; Nạn nhân buôn bán người,,,,,,
+Bệnh viện Nhân Ái,Bệnh viện tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,Nhân viên Y tế; Người bệnh mạn tính; Người có H; Cộng đồng LGBTQ+; Nạn nhân buôn bán người,,,,,,
+Bệnh viện Lê Văn Thịnh,Bệnh viện tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,Nhân viên Y tế; Người bệnh mạn tính; Người có H; Cộng đồng LGBTQ+; Nạn nhân buôn bán người,,,,,,
+Bệnh viện đa khoa Vạn Hạnh,Bệnh viện tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,Nhân viên Y tế; Người bệnh mạn tính; Người có H; Cộng đồng LGBTQ+; Nạn nhân buôn bán người,,,,,,
+Bệnh viện Đức Khang,Bệnh viện tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Bệnh viện Lê Văn Việt,Bệnh viện công lập,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Bệnh viện đa khoa Thủ Đức,Bệnh viện công lập,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Bệnh viện đa khoa Khánh Hội (Bệnh viện Quận 4 cũ),Bệnh viện công lập,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Bệnh viện đa khoa Hồng Đức III,Bệnh viện tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Bệnh viện đa khoa Lãnh Binh Thăng (Bệnh viện Quận 11 cũ),Bệnh viện công lập,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Bệnh viện Tâm Anh,Bệnh viện tư nhân,"2B Phổ Quang, Phường Cầu Ông Lãnh, Thành phố Hồ Chí Minh","2B Phổ Quang, Phường 2, Quận Tân Bình",,Thành phố Hồ Chí Minh,10.802485,106.6660436,,0287 102 6789 / Hotline: 1800 6858,https://tamanhhospital.vn,,,,Bệnh viện đa khoa tư nhân cao cấp; chưa xác nhận công khai có khoa Tâm thần/Tâm lý lâm sàng riêng biệt tại cơ sở TP.HCM - cần liên hệ trực tiếp để xác nhận dịch vụ sức khoẻ tâm thần cụ thể.,,https://www.google.com/maps/search/?api=1&query=2B%20Ph%E1%BB%95%20Quang%2C%20Ph%C6%B0%E1%BB%9Dng%20C%E1%BA%A7u%20%C3%94ng%20L%C3%A3nh%2C%20Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh,,,,,
+Bệnh viện đa khoa quốc tế Hoàn Mỹ Thủ Đức,Bệnh viện tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Bệnh viện Xuyên Á,Bệnh viện tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Bệnh viện đa khoa quốc tế Vinmec Central Park,Bệnh viện tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Bệnh viện Hồng Đức II,Bệnh viện tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Bệnh viện FV,Bệnh viện tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Bệnh viện Gia An 115,Bệnh viện tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Bệnh viện đa khoa An Sinh,Bệnh viện tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Bệnh viện Triều An,Bệnh viện tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+"Khoa Tâm lý, Bệnh viện Nhi Đồng 1",Bệnh viện công lập,"341 Sư Vạn Hạnh, Phường Vườn Lài, Thành phố Hồ Chí Minh","341 Sư Vạn Hạnh, Phường 10, Quận 10",Phường Vườn Lài,Thành phố Hồ Chí Minh,10.7686589,106.6702954,"150,000₫-300,000₫ (khám thường - khám ngoài giờ)",Tổng đài đặt lịch: 1900 2115 / 1900 7299; BV: (028) 3927 1119,https://nhidong.org.vn,"Thứ 2 - Thứ 6: 7h00-11h30 & 12h30-16h00 (khám ngoài giờ 16h-20h)
+Thứ 7: 7h00-11h30",,,"Khoa chuyên đánh giá, chẩn đoán và can thiệp các vấn đề phát triển, hành vi, tâm lý ở trẻ em (tự kỷ, tăng động giảm chú ý, rối loạn lo âu, trầm cảm, chậm nói...); đội ngũ gồm bác sĩ và chuyên viên tâm lý, có phòng can thiệp giáo dục đặc biệt.",Trẻ em và vị thành niên có vấn đề phát triển/tâm lý; Phụ huynh cần tư vấn,https://www.google.com/maps/search/?api=1&query=341%20S%C6%B0%20V%E1%BA%A1n%20H%E1%BA%A1nh%2C%20Ph%C6%B0%E1%BB%9Dng%20V%C6%B0%E1%BB%9Dn%20L%C3%A0i%2C%20Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh,0,15,,,Psychiatrist; Psychologist
+Bệnh viện Phục hồi chức năng - Điều trị bệnh nghề nghiệp,Bệnh viện công lập,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Bệnh viện Y học cổ truyền,Bệnh viện công lập,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+"Khoa Tâm lý - Vật lý trị liệu, Bệnh viện Nhi Đồng 2",Bệnh viện công lập,"14 Lý Tự Trọng, Phường Sài Gòn, Thành phố Hồ Chí Minh",,Phường Sài Gòn,Thành phố Hồ Chí Minh,10.7807092,106.7028963,,(028) 3829 5723 / (028) 3829 5724,https://www.benhviennhi.org.vn,,,,"Đơn vị thuộc Bệnh viện Nhi Đồng 2, đánh giá và can thiệp tâm lý cho trẻ em kết hợp phục hồi chức năng - vật lý trị liệu.",Trẻ em có vấn đề phát triển/tâm lý,https://www.google.com/maps/search/?api=1&query=14%20L%C3%BD%20T%E1%BB%B1%20Tr%E1%BB%8Dng%2C%20Ph%C6%B0%E1%BB%9Dng%20S%C3%A0i%20G%C3%B2n%2C%20Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh,0,15,,,Psychiatrist; Psychologist
+Bệnh viện Nhi Đồng Thành Phố,Bệnh viện công lập,"15 Võ Trần Chí, Xã Tân Kiên, Thành phố Hồ Chí Minh","15 Võ Trần Chí, Xã Tân Kiên, Huyện Bình Chánh",Xã Tân Kiên,Thành phố Hồ Chí Minh,10.7096267,106.5742113,,Tổng đài: 1900 1217 / (028) 2253 6688 / (028) 1080,https://bvndtp.org.vn,"Thứ 2 - Thứ 6: Sáng 7h00-11h00, Chiều 12h00-16h00",,,"Bệnh viện Nhi hàng đầu khu vực phía Nam; Đơn vị Tâm lý thuộc Khoa Sức Khỏe Trẻ Em thực hiện trị liệu hệ thống - gia đình, trị liệu nghệ thuật, can thiệp nhận thức - hành vi cho trẻ. Trẻ được bác sĩ Nhi khám sàng lọc trước khi chuyển sang Khoa Tâm lý.",Trẻ em và gia đình cần hỗ trợ tâm lý,https://www.google.com/maps/search/?api=1&query=15%20V%C3%B5%20Tr%E1%BA%A7n%20Ch%C3%AD%2C%20X%C3%A3%20T%C3%A2n%20Ki%C3%AAn%2C%20Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh,0,15,,,Psychiatrist; Psychologist
+Bệnh viện Ngoại Thần kinh quốc tế,Bệnh viện tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Bệnh viện Ngoại Sante,Bệnh viện tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+"Phòng khám tâm lý thuộc Khoa Khám Bệnh, Bệnh viện quốc tế Vinmec, TP. HCM",Bệnh viện tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Phòng khám đa khoa thuộc Khoa Khám bệnh Trung tâm Y tế Phường Gò Vấp/ Phòng khám đa khoa Nguyễn Thái Sơn,Bệnh viện công lập,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Bệnh viện quốc tế City,Bệnh viện tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Phòng khám đa khoa (thuộc Công ty TNHH Y tế Đại Phước),Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Phòng khám đa khoa (thuộc Công ty TNHH PK đa khoa quốc tế Hàng Xanh),Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Phòng khám đa khoa (thuộc Công ty TNHH PK đa khoa Nhơn Tâm),Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Phòng khám đa khoa (thuộc Công ty TNHH PK đa khoa Hưng Dũng),Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Phòng khám đa khoa (thuộc SIM Medical Center - Chi nhánh Công ty CP SIM MED),Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Phòng khám đa khoa Victoria Healthcare (thuộc Công ty CP Phát triển Y tế Victoria Healthcare),Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Phòng khám Jio Health,Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Phòng khám chuyên khoa Tâm thần - BS CK1 Nhữ Văn Minh,Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Phòng mạch Bác sĩ Chu Quang An - Chuyên khoa Tâm thần,Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Phòng khám Tâm Thần kinh - Bác sĩ Vũ Kim Hoàn,Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Phòng khám chuyên khoa Tâm thần - Bác sĩ Chu Thị Dung,Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Phòng khám Tâm Thần kinh - Bác sĩ Đặng Thế Ân,Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Phòng khám Prof. Thọ & Dr. Nguyên,Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Phòng khám Chuyên khoa Tâm thần Bác sĩ Huỳnh Thanh Hiển,Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Phòng khám Chuyên khoa Tâm thần Bác sĩ Nguyễn Trung Hoàng,Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Phòng khám Tâm Thần Kinh Mất Ngủ Bác sĩ Lê Đỗ Hưng,Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Phòng khám Tâm thần kinh Nguyễn Thế Hùng,Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Phòng Khám Chuyên Khoa Tâm Thần - Trần Duy Trâm,Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Phòng khám chuyên khoa Tâm thần Bác sĩ Giang Vân,Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Phòng khám Tâm thần kinh - Bác sĩ Phan Văn Tiễn,Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Phòng khám Thần kinh - BS. Nguyễn Văn Hường,Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Phòng khám Chuyên khoa Tâm thần kinh - BS. Nguyễn Đức Tuệ,Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Phòng khám Chuyên khoa Tâm thần kinh - BS. Nguyễn Đức Chinh,Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+"Phòng khám Tâm
+lý - Tâm thần
+BS.CKII. Đặng Thị
+Ngọc Hạnh",Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+"Phòng Khám
+Chuyên Khoa Tâm
+Thần - Trần Trung
+Nghĩa",Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+"Phòng Khám
+Chuyên Khoa Tâm
+Thần - Nguyễn Thị
+Nhỏ",Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+"Phòng khám Bác
+sĩ Phạm Văn Khởi",Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+"Phòng mạch
+chuyên Tâm thần
+kinh của BS
+Nguyễn Đăng Đức",Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+"Phòng Khám
+Chuyên Khoa Tâm
+Thần - Nguyễn
+Đức Khôi",Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+"Phòng khám Thần
+kinh – Bác sĩ Đào
+Trần Thái",Phòng khám tư nhân,,,,Thành phố Hồ Chí Minh,,,,,,,,,,,,,,,,
+Bệnh viện Tâm thần Trung ương 2,Bệnh viện công lập,"1310 Nguyễn Ái Quốc, Khu phố 7, Phường Tân Phong, Thành phố Biên Hoà, Tỉnh Đồng Nai",,Phường Tân Phong,Tỉnh Đồng Nai,10.9653452,106.8464697,"26,200₫-39,000₫ (giá khám tâm thần cơ bản; chi phí điều trị nội trú tính riêng theo thời gian điều trị)",0251 3946282 (đặt lịch) / (0251) 3819187 (tổng đài BV),http://tamthantw2.gov.vn,"Thứ 2 - Thứ 7: Sáng 7h00-11h00, Chiều 13h30-16h30
+Tiếp nhận cấp cứu 24/24",,,"Bệnh viện chuyên khoa tâm thần tuyến Trung ương duy nhất phụ trách khu vực phía Nam (tiền thân từ 1915); có các khoa sâu: Tâm thần người già, Tâm thần trẻ em, Phục hồi chức năng, và đặc biệt Khoa Tâm lý Lâm sàng riêng biệt. Vừa là cơ sở khám chữa bệnh vừa đào tạo và chỉ đạo chuyên môn tâm thần cho tuyến dưới.",Người lớn; Người cao tuổi; Trẻ em; Người có rối loạn tâm thần mạn tính,https://www.google.com/maps/search/?api=1&query=1310%20Nguy%E1%BB%85n%20%C3%81i%20Qu%E1%BB%91c%2C%20Khu%20ph%E1%BB%91%207%2C%20Ph%C6%B0%E1%BB%9Dng%20T%C3%A2n%20Phong%2C%20Th%C3%A0nh%20ph%E1%BB%91%20Bi%C3%AAn%20Ho%C3%A0%2C%20T%E1%BB%89nh%20%C4%90%E1%BB%93ng%20Nai,0,,,,Psychiatrist; Psychologist
+Bệnh viện Đa khoa Thống Nhất Đồng Nai,Bệnh viện công lập,"234 Quốc lộ 1, Phường Tân Biên, Thành phố Biên Hoà, Tỉnh Đồng Nai",,Phường Tân Biên,Tỉnh Đồng Nai,10.9671543,106.9003153,,(0251) 3883660,http://www.bvthongnhatdn.vn,"Thứ 2 - Thứ 7: 7h00-17h00
+Cấp cứu 24/24",,,"Bệnh viện đa khoa hạng I tuyến tỉnh (1.034 giường, 47 khoa phòng). Có Khoa Nội Thần kinh chuyên chẩn đoán/điều trị bệnh lý thần kinh (đột quỵ, động kinh, Parkinson, đau đầu...); chưa xác nhận công khai có khoa Tâm thần/Tâm lý lâm sàng riêng - nên gọi trước để hỏi dịch vụ khám tâm lý/tâm thần cụ thể.",Người dân Đồng Nai và vùng lân cận,https://www.google.com/maps/search/?api=1&query=234%20Qu%E1%BB%91c%20l%E1%BB%99%201%2C%20Ph%C6%B0%E1%BB%9Dng%20T%C3%A2n%20Bi%C3%AAn%2C%20Th%C3%A0nh%20ph%E1%BB%91%20Bi%C3%AAn%20Ho%C3%A0%2C%20T%E1%BB%89nh%20%C4%90%E1%BB%93ng%20Nai,,,,,
+Bệnh viện Đa khoa Đồng Nai,Bệnh viện công lập,"2 Đồng Khởi, Phường Tam Hiệp, Thành phố Biên Hoà, Tỉnh Đồng Nai",,,Tỉnh Đồng Nai,10.9526833,106.867861,,1900 599 800,https://benhviendakhoadongnai.com,,,,"Bệnh viện đa khoa tuyến tỉnh lâu đời (hơn 120 năm), quy mô lớn (~1.100 giường, gần 3.000 lượt khám/ngày). Có khoa/chuyên khoa nội thần kinh; chưa xác nhận công khai khoa Tâm thần hay Tâm lý lâm sàng riêng - cần liên hệ trực tiếp để xác nhận dịch vụ sức khoẻ tâm thần.",Người dân Đồng Nai và vùng lân cận,,,,,,

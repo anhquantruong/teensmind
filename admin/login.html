@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PsyMapVN — Admin</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <main class="login-wrap">
+    <form class="login-card" id="loginForm">
+      <div class="login-brand">
+        <h1>PsyMapVN</h1>
+        <span>ADMIN</span>
+      </div>
+      <h2>Đăng nhập</h2>
+      <p class="login-sub">Nhập tên đăng nhập và mật khẩu để vào trang quản lý.</p>
+      <div class="login-error hidden" id="loginError"></div>
+      <label>
+        Tên đăng nhập
+        <input
+          type="text"
+          name="username"
+          id="loginUsername"
+          autocomplete="username"
+          required
+        >
+      </label>
+
+      <label>
+        Mật khẩu
+
+        <input
+          type="password"
+          name="password"
+          id="loginPassword"
+          autocomplete="current-password"
+          required
+        >
+      </label>
+
+      <button
+        type="submit"
+        class="login-button"
+        id="loginButton"
+      >
+        Đăng nhập
+      </button>
+    </form>
+
+  </main>
+
+  <script src="login.js"></script>
+
+</body>
+
+</html>

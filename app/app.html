@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta. name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PsyMapVN · App</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,340;9..144,440;9..144,560;9..144,640&family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+</head>
+<body data-theme="light" data-lang="vi" class="app-body">
+
+  <!-- ===== AUTH OVERLAY ===== -->
+  <div class="auth-overlay" id="authOverlay">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <img src="assets/navbar-logo.png" alt="PsyMapVN">
+      </div>
+
+      <div class="auth-tabs">
+        <button type="button" class="auth-tab active" id="tabLogin">
+          <span lang-el="vi">Đăng nhập</span><span lang-el="en">Log in</span>
+        </button>
+        <button type="button" class="auth-tab" id="tabRegister">
+          <span lang-el="vi">Đăng ký</span><span lang-el="en">Sign up</span>
+        </button>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <form class="auth-form" id="loginForm">
+        <div class="auth-field">
+          <label><span lang-el="vi">Email</span><span lang-el="en">Email</span></label>
+          <input type="email" id="loginEmail" required placeholder="you@example.com">
+        </div>
+        <div class="auth-field">
+          <label><span lang-el="vi">Mật khẩu</span><span lang-el="en">Password</span></label>
+          <div class="auth-password-wrap">
+            <input type="password" id="loginPassword" required placeholder="••••••••">
+            <button type="button" class="auth-eye-btn" data-toggle="loginPassword" aria-label="Hiện/ẩn mật khẩu">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+        </div>
+        <p class="auth-error hidden" id="loginError"></p>
+        <button type="submit" class="auth-submit">
+          <span lang-el="vi">Đăng nhập</span><span lang-el="en">Log in</span>
+        </button>
+      </form>
+
+      <!-- REGISTER FORM -->
+      <form class="auth-form hidden" id="registerForm">
+        <div class="auth-field">
+          <label><span lang-el="vi">Họ tên</span><span lang-el="en">Full name</span></label>
+          <input type="text" id="regName" required placeholder="Nguyễn Văn A">
+        </div>
+        <div class="auth-field">
+          <label><span lang-el="vi">Email</span><span lang-el="en">Email</span></label>
+          <input type="email" id="regEmail" required placeholder="you@example.com">
+        </div>
+        <div class="auth-field">
+          <label><span lang-el="vi">Mật khẩu</span><span lang-el="en">Password</span></label>
+          <div class="auth-password-wrap">
+            <input type="password" id="regPassword" required placeholder="Tối thiểu 6 ký tự">
+            <button type="button" class="auth-eye-btn" data-toggle="regPassword" aria-label="Hiện/ẩn mật khẩu">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+        </div>
+        <div class="auth-field">
+          <label><span lang-el="vi">Nhập lại mật khẩu</span><span lang-el="en">Confirm password</span></label>
+          <div class="auth-password-wrap">
+            <input type="password" id="regPasswordConfirm" required placeholder="Nhập lại mật khẩu">
+            <button type="button" class="auth-eye-btn" data-toggle="regPasswordConfirm" aria-label="Hiện/ẩn mật khẩu">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+        </div>
+        <p class="auth-error hidden" id="registerError"></p>
+        <button type="submit" class="auth-submit">
+          <span lang-el="vi">Tạo tài khoản</span><span lang-el="en">Create account</span>
+        </button>
+      </form>
+
+      <p class="auth-note">
+        <span lang-el="vi">Bằng việc tiếp tục, bạn đồng ý với các điều khoản sử dụng của PsyMapVN.</span>
+        <span lang-el="en">By continuing, you agree to PsyMapVN's terms of use.</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="app-shell hidden" id="appShell">
+
+    <aside class="app-sidebar">
+      <a class="app-sidebar-logo" href="index.html">
+        <img src="assets/navbar-logo.png" alt="PsyMapVN">
+      </a>
+
+      <nav class="app-nav">
+        <button type="button" class="app-nav-item active" data-section="relax">
+          <i class="fa-solid fa-spa"></i>
+          <span lang-el="vi">Bài tập thư giãn</span>
+          <span lang-el="en">Relaxation exercises</span>
+        </button>
+        <button type="button" class="app-nav-item" data-section="reading">
+          <i class="fa-solid fa-book-open"></i>
+          <span lang-el="vi">SNAWikiPsy</span>
+          <span lang-el="en">SNAWikiPsy</span>
+        </button>
+        <button type="button" class="app-nav-item" data-section="find">
+          <i class="fa-solid fa-map-location-dot"></i>
+          <span lang-el="vi">Tìm cơ sở</span>
+          <span lang-el="en">Find a clinic</span>
+        </button>
+      </nav>
+
+      <div class="app-sidebar-footer">
+        <a class="app-nav-item app-home-link" href="index.html">
+        <i class="fa-solid fa-house"></i>
+        <span lang-el="vi">Về trang chủ</span>
+        <span lang-el="en">Back to homepage</span>
+        </a>
+        <button type="button" class="app-lang-btn" id="appLangBtn">
+        <span lang-el="vi">EN</span><span lang-el="en">VI</span>
+        </button>
+        <div class="app-account-wrap">
+          <button type="button" class="app-nav-item app-account-trigger" id="accountTrigger" aria-expanded="false" aria-controls="accountPanel">
+            <div class="app-user-avatar" id="appUserAvatar"></div>
+            <span lang-el="vi">Tài khoản</span>
+            <span lang-el="en">Account</span>
+            <i class="fa-solid fa-chevron-up app-account-caret" aria-hidden="true"></i>
+          </button>
+
+          <div class="app-account-panel" id="accountPanel">
+            <div class="app-account-head">
+              <div class="app-user-avatar app-user-avatar--lg" id="appUserAvatarLg"></div>
+              <div class="app-account-headinfo">
+                <span class="app-user-name" id="appUserName">—</span>
+                <span class="app-user-email" id="appUserEmail">—</span>
+              </div>
+            </div>
+            <button type="button" class="app-logout-btn" id="appLogoutBtn">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              <span lang-el="vi">Đăng xuất</span>
+              <span lang-el="en">Log out</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="app-content">
+
+      <!-- BÀI TẬP THƯ GIÃN -->
+      <section class="app-section" id="sectionRelax">
+        <div class="app-section-head">
+          <span class="app-section-eyebrow"><span lang-el="vi">THỰC HÀNH</span><span lang-el="en">PRACTICE</span></span>
+          <h1><span lang-el="vi">Bài tập thư giãn</span><span lang-el="en">Relaxation exercises</span></h1>
+          <p><span lang-el="vi">Những bài thực hành ngắn giúp bạn chậm lại và kết nối với chính mình.</span><span lang-el="en">Short exercises to help you slow down and reconnect with yourself.</span></p>
+        </div>
+        <div class="app-card-grid">
+          <article class="app-mini-card">
+            <span class="app-mini-num">01</span>
+            <h3><span lang-el="vi">Grounding 5–4–3–2–1</span><span lang-el="en">5–4–3–2–1 Grounding</span></h3>
+            <p><span lang-el="vi">Đưa sự chú ý trở lại hiện tại thông qua năm giác quan.</span><span lang-el="en">Bring your attention back to the present through your five senses.</span></p>
+            <a class="app-mini-btn" href="index.html">
+              <span lang-el="vi">Bắt đầu</span><span lang-el="en">Begin</span> <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+          <article class="app-mini-card app-mini-card--soon">
+            <span class="app-mini-num">02</span>
+            <h3><span lang-el="vi">Thở chậm</span><span lang-el="en">Slow breathing</span></h3>
+            <p><span lang-el="vi">Sắp có.</span><span lang-el="en">Coming soon.</span></p>
+          </article>
+          <article class="app-mini-card app-mini-card--soon">
+            <span class="app-mini-num">03</span>
+            <h3><span lang-el="vi">Body Scan</span><span lang-el="en">Body scan</span></h3>
+            <p><span lang-el="vi">Sắp có.</span><span lang-el="en">Coming soon.</span></p>
+          </article>
+        </div>
+      </section>
+
+      <!-- BÀI ĐỌC -->
+      <section class="app-section hidden" id="sectionReading">
+  <div class="app-section-head">
+    <span class="app-section-eyebrow"><span lang-el="vi">KIẾN THỨC</span><span lang-el="en">KNOWLEDGE</span></span>
+    <h1><span lang-el="vi">Bài đọc</span><span lang-el="en">Readings</span></h1>
+    <p><span lang-el="vi">Những bài viết ngắn giúp bạn hiểu thêm về sức khoẻ tâm thần.</span><span lang-el="en">Short articles to help you understand mental health better.</span></p>
+  </div>
+
+  <div class="reading-list" id="readingGrid">
+    <p class="reading-empty" id="readingLoading">
+      <span lang-el="vi">Đang tải bài viết...</span><span lang-el="en">Loading articles...</span>
+    </p>
+  </div>
+</section>
+
+      <!-- TÌM CƠ SỞ -->
+      <section class="app-section hidden" id="sectionFind">
+        <div class="app-section-head">
+          <span class="app-section-eyebrow"><span lang-el="vi">HỖ TRỢ</span><span lang-el="en">SUPPORT</span></span>
+          <h1><span lang-el="vi">Tìm cơ sở tham vấn</span><span lang-el="en">Find a counseling facility</span></h1>
+          <p><span lang-el="vi">Trả lời vài câu hỏi để nhận gợi ý cơ sở phù hợp với bạn.</span><span lang-el="en">Answer a few questions to get facility suggestions that fit you.</span></p>
+        </div>
+        <div class="app-card-grid app-card-grid--placeholder">
+          <article class="app-mini-card">
+            <h3><span lang-el="vi">Bắt đầu sàng lọc</span><span lang-el="en">Start screening</span></h3>
+            <p><span lang-el="vi">Công cụ sàng lọc hiện đang nằm ở trang chủ.</span><span lang-el="en">The screening tool currently lives on the homepage.</span></p>
+            <a class="app-mini-btn" href="index.html">
+              <span lang-el="vi">Đến trang chủ</span><span lang-el="en">Go to homepage</span> <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+        </div>
+      </section>
+
+    </main>
+  </div>
+  <div class="article-overlay hidden" id="articleOverlay">
+  <div class="article-reader">
+    <button class="article-close-btn" id="articleCloseBtn" aria-label="Đóng">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <img class="article-reader-cover hidden" id="articleReaderCover" alt="">
+    <span class="article-reader-eyebrow"><span lang-el="vi">BÀI ĐỌC</span><span lang-el="en">READING</span></span>
+    <h1 class="article-reader-title" id="articleReaderTitle"></h1>
+    <p class="article-reader-subtitle" id="articleReaderSubtitle"></p>
+    <div class="article-reader-body" id="articleReaderBody"></div>
+  </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
